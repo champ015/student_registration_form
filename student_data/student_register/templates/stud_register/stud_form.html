@@ -1,0 +1,29 @@
+{%extends 'stud_register/index.html'%}
+{%load crispy_forms_tags%}
+{%block content%}
+<form action="" method="post" autocomplete="off"> 
+    {%csrf_token%}
+    <div class="row">
+        <div class="col-md-8">
+            {{form.name|as_crispy_field}}
+            {{form.mobile|as_crispy_field}}
+            {{form.email|as_crispy_field}}
+            {{form.department|as_crispy_field}}
+            {{form.oragnization|as_crispy_field}}
+        </div>
+        <div class="col-md-8">{{form.studcode|as_crispy_field}}</div>
+        <div class="col-md-4">{{form.position|as_crispy_field}}</div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-success btn-block btn-lg">
+                <i class="fas fa-database">submit</i>
+        </div>
+        <div class="col-md-4">
+            <a href="{%url 'data' %}" class="btn btn-secondary btn-block btn-lg">
+            <i class="fas fa-stream">RecentPage</i>
+            </a>
+        </div>
+    </div>
+</form> 
+{%endblock%}

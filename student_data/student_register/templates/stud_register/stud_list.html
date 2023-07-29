@@ -1,0 +1,39 @@
+{%extends 'stud_register/index.html'%}
+{%block content%}
+<table class="table table-borderless">
+    <thead class="border border-bottom font-weight-bold">
+        <tr>
+            <td>StudentName</td>
+            <td>MobileNo</td>
+            <td>Email</td>
+            <td>Dept</td>
+            <td>Oragnization</td>
+            <td><a href="{%url 'insert' %}" class="btn btn-outline-success">
+                <i class="fas fa-plus">AddNew</i>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in student_list %}
+        <tr>
+            <td>{{student.name}}</td>
+            <td>{{student.mobile}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.department}}</td>
+            <td>{{student.oragnization}}</td>
+            <td><a href="{%url 'updatedata' student.id %}" class="btn text-secondary px=0">
+                <i class="far fa-edit">Update</i>
+            </td>
+            <td>
+                <form action="{%url 'delete' student.id %}" method="post" class="d-inline">
+                    {%csrf_token%}
+                    <button type="submit" class="btn">
+                    <i class="far fa-trash-alt text-danger float-right">Delete</i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{%endblock%}
